@@ -50,37 +50,81 @@
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-white/70 hover:text-white focus:outline-none">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                    class="lg:hidden relative z-[70] text-white/70 hover:text-white focus:outline-none p-2 -mr-2 transition-colors duration-200">
                 <svg x-show="!mobileMenuOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
-                <svg x-show="mobileMenuOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg x-show="mobileMenuOpen" x-cloak class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
+    <!-- Mobile Menu Backdrop -->
     <div x-show="mobileMenuOpen" 
-         x-transition:enter="transition ease-out duration-200"
-         x-transition:enter-start="opacity-0 -translate-y-4"
-         x-transition:enter-end="opacity-100 translate-y-0"
-         class="absolute top-full left-0 w-full bg-[#0F0F0F] py-8 px-8 lg:hidden shadow-2xl">
-        <div class="flex flex-col space-y-6">
-            <a href="#" class="text-[18px] text-white/70 font-medium hover:text-white transition-colors">My Wallet</a>
-            <a href="#" class="text-[18px] text-white/70 font-medium hover:text-white transition-colors">All Tools</a>
-            @auth
-                <a href="{{ route('profile.show') }}" class="text-[16px] text-white/70 font-medium">Profile Settings</a>
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <button type="submit" @click.prevent="$root.submit();" class="text-[16px] text-red-400 font-medium">
-                        Log Out
-                    </button>
-                </form>
-            @else
-                <a href="{{ route('login') }}" class="flex items-center justify-center py-4 bg-[#EFFF00] text-black text-[16px] font-bold rounded-full transition-all">Sign In</a>
-            @endauth
+         x-cloak
+         x-transition:enter="transition opacity ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition opacity ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @click="mobileMenuOpen = false"
+         class="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] lg:hidden">
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div x-show="mobileMenuOpen" 
+         x-cloak
+         x-transition:enter="transition transform ease-out duration-300"
+         x-transition:enter-start="translate-x-full"
+         x-transition:enter-end="translate-x-0"
+         x-transition:leave="transition transform ease-in duration-200"
+         x-transition:leave-start="translate-x-0"
+         x-transition:leave-end="translate-x-full"
+         class="fixed top-0 right-0 w-[85%] max-w-[400px] h-full bg-[#0A0A0A] z-[65] lg:hidden shadow-2xl border-l border-white/5"
+         x-init="$watch('mobileMenuOpen', value => { document.body.style.overflow = value ? 'hidden' : '' })">
+        
+        <div class="flex flex-col h-full p-8 pt-24">
+            <div class="flex flex-col space-y-8">
+                <a href="#" @click="mobileMenuOpen = false" class="text-[24px] text-white/70 font-semibold hover:text-[#EFFF00] transition-colors">My Wallet</a>
+                <a href="#" @click="mobileMenuOpen = false" class="text-[24px] text-white/70 font-semibold hover:text-[#EFFF00] transition-colors">All Tools</a>
+                
+                <div class="h-px bg-white/5 my-4"></div>
+                
+                @auth
+                    <div class="flex items-center space-x-4 mb-6">
+                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <img class="h-12 w-12 rounded-full object-cover border-2 border-[#EFFF00]" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        @else
+                            <div class="h-12 w-12 rounded-full bg-[#EFFF00] flex items-center justify-center text-black text-lg font-bold">
+                                {{ substr(Auth::user()->name, 0, 1) }}
+                            </div>
+                        @endif
+                        <div class="flex flex-col">
+                            <span class="text-white font-bold">{{ Auth::user()->name }}</span>
+                            <span class="text-white/40 text-sm italic">{{ Auth::user()->email }}</span>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ route('profile.show') }}" @click="mobileMenuOpen = false" class="text-[18px] text-white/70 font-medium hover:text-white">Profile Settings</a>
+                    
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                        @csrf
+                        <button type="submit" @click.prevent="$root.submit(); mobileMenuOpen = false" class="text-[18px] text-red-400 font-medium hover:text-red-300">
+                            Log Out
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" @click="mobileMenuOpen = false" class="flex items-center justify-center py-5 bg-[#EFFF00] text-black text-[18px] font-bold rounded-2xl hover:bg-white transition-all shadow-lg shadow-[#EFFF00]/10">Sign In</a>
+                @endauth
+            </div>
+
+            <div class="mt-auto pt-10 text-center">
+                <p class="text-white/20 text-sm font-medium">&copy; {{ date('Y') }} DMPlug</p>
+            </div>
         </div>
     </div>
 </nav>

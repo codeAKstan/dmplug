@@ -112,6 +112,34 @@
                 </div>
 
             </div>
+            <!-- Tools -->
+             <div class="mt-32 bg-[#ffffff] text-black p-16 text-center overflow-hidden relative" >
+                <h2 class="text-6xl font-bold mb-4">Tools</h2>
+                <p class="text-xl mb-12 font-medium">A list of tools available on this website.</p>
+            </div>
+                
+            <!-- CTA -->
+                <div class="mt-32 bg-[#FCE26F] text-black rounded-[60px] p-16 text-center overflow-hidden relative">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#FCE26F] via-[#FFC433] to-[#FFB661] opacity-20 pointer-events-none"></div>
+                    
+                    <h2 class="text-6xl font-bold mb-4">Ready to turn your ideas into reality?</h2>
+                    <p class="text-xl mb-12 font-medium">Get instant access to premium templates and designs.</p>
+                    
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <a href="#" class="px-8 py-5 rounded-full bg-black text-white font-bold hover:bg-gray-800 transition-all shadow-2xl transform hover:-translate-y-1 hover:scale-[1.02]">Browse Templates</a>
+                        <a href="#" class="px-8 py-5 rounded-full bg-white text-black font-bold hover:bg-gray-100 transition-all shadow-lg transform hover:-translate-y-1 hover:scale-[1.02]">Contact Us</a>
+                    </div>
+                </div>
+            <!-- Disclaimer -->
+            <div class="mt-32 bg-[#2BB69C] text-white rounded-[60px] p-16 text-center overflow-hidden relative">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#2BB69C] via-[#2BB69C] to-[#2BB69C] opacity-20 pointer-events-none"></div>
+                
+                <h2 class="text-6xl font-bold mb-4">Disclaimer!!!</h2>
+                <p class="text-xl mb-12 font-medium">By using this website, you agree that this website is just a piece of software to create documents, websites, and tools for the sole purpose of content creation, and that you're 100% responsible for whatever you do with the tools available on this webites, the documents or links generated for you on this website.
+
+You agree by using this website that the owner(s) of this website and other websites it is connected to, such as the documents viewing website(s) and websites are not responsible in any way for whatever you do with them..</p>
+            </div>
+            
         </main>
 
         <footer class="py-10 border-t border-white/5 text-center text-white/20 text-sm font-medium">
