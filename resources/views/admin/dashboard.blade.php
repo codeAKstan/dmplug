@@ -27,20 +27,37 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white/5 border border-white/10 rounded-[30px] p-8">
                 <h3 class="text-white/50 text-sm font-bold uppercase tracking-wider mb-2">Total Users</h3>
-                <p class="text-4xl font-bold">1,284</p>
+                <p class="text-4xl font-bold">{{ number_format($totalUsers) }}</p>
             </div>
             <div class="bg-white/5 border border-white/10 rounded-[30px] p-8">
                 <h3 class="text-white/50 text-sm font-bold uppercase tracking-wider mb-2">Total Revenue</h3>
-                <p class="text-4xl font-bold text-[#EFFF00]">$4,820</p>
+                <p class="text-4xl font-bold text-[#EFFF00]">${{ number_format($totalRevenue, 2) }}</p>
             </div>
             <div class="bg-white/5 border border-white/10 rounded-[30px] p-8">
-                <h3 class="text-white/50 text-sm font-bold uppercase tracking-wider mb-2">Pending Tools</h3>
-                <p class="text-4xl font-bold">12</p>
+                <h3 class="text-white/50 text-sm font-bold uppercase tracking-wider mb-2">Available Tools</h3>
+                <p class="text-4xl font-bold">{{ number_format($availableTools) }}</p>
             </div>
         </div>
 
-        <div class="mt-10 bg-white/5 border border-white/10 rounded-[40px] p-10 h-96 flex items-center justify-center">
-            <p class="text-white/20 text-xl font-medium">Dashboard charts and detailed stats will appear here.</p>
+        <div class="mt-12">
+            <h2 class="text-xl font-bold mb-6">Quick Actions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="{{ route('admin.users.index') }}" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300">
+                    <div class="mb-4 text-[#EFFF00] group-hover:text-black transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold group-hover:text-black transition-colors">View Users</h4>
+                    <p class="text-white/40 text-sm mt-1 group-hover:text-black/60 transition-colors">Manage registered accounts</p>
+                </a>
+
+                <a href="{{ route('admin.tools.create') }}" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300">
+                    <div class="mb-4 text-[#EFFF00] group-hover:text-black transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold group-hover:text-black transition-colors">Add Tools</h4>
+                    <p class="text-white/40 text-sm mt-1 group-hover:text-black/60 transition-colors">List a new product or tool</p>
+                </a>
+            </div>
         </div>
     </main>
 </body>
