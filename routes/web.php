@@ -38,7 +38,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('users/{user}/toggle-block', [DashboardController::class, 'toggleBlock'])->name('users.toggle-block');
         Route::post('users/{user}/update-balance', [DashboardController::class, 'updateBalance'])->name('users.update-balance');
         Route::post('users/{user}/fund', [DashboardController::class, 'fundAccount'])->name('users.fund');
-        Route::get('tools/create', [DashboardController::class, 'createTool'])->name('tools.create');
         Route::post('tools', [DashboardController::class, 'storeTool'])->name('tools.store');
+        Route::post('settings', [DashboardController::class, 'updateSettings'])->name('settings.update');
     });
 });

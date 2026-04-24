@@ -5,11 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Tool;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
+    public function updateSettings(Request $request)
+    {
+        $request->validate([
+            'whatsapp_number' => 'required|string',
+        ]);
+
+        Setting::updateOrCreate(
+            ['key' => 'whatsapp_number'],
+            ['value' => $request->whatsapp_number]
+        );
+
+        return back()->with('success', 'Settings updated successfully.');
+    }
+
     public function index()
     {
         $totalUsers = User::count();
