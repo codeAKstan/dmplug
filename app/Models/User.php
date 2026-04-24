@@ -33,6 +33,7 @@ class User extends Authenticatable
         'password',
         'balance',
         'is_blocked',
+        'wallet_address',
     ];
 
     /**

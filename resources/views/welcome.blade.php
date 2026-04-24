@@ -131,7 +131,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     @foreach($categoryTools as $tool)
-                    <div class="group bg-white/5 border border-white/10 rounded-[40px] overflow-hidden hover:border-[#EFFF00]/50 transition-all duration-500 flex flex-col">
+                    <div class="group bg-white/5 border border-white/10  overflow-hidden hover:border-[#EFFF00]/50 transition-all duration-500 flex flex-col">
                         <div class="aspect-video overflow-hidden relative">
                             @if($tool->image)
                             <img src="{{ asset('storage/' . $tool->image) }}" alt="{{ $tool->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">

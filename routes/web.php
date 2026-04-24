@@ -19,6 +19,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::post('/wallet/generate', [\App\Http\Controllers\User\WalletController::class, 'generate'])->name('wallet.generate');
 });
 
 // Admin Routes
