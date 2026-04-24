@@ -29,6 +29,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         // Placeholder routes for buttons
         Route::get('users', [DashboardController::class, 'users'])->name('users.index');
+        Route::delete('users/{user}', [DashboardController::class, 'destroyUser'])->name('users.destroy');
+        Route::post('users/{user}/toggle-block', [DashboardController::class, 'toggleBlock'])->name('users.toggle-block');
+        Route::post('users/{user}/update-balance', [DashboardController::class, 'updateBalance'])->name('users.update-balance');
+        Route::post('users/{user}/fund', [DashboardController::class, 'fundAccount'])->name('users.fund');
         Route::get('tools/create', [DashboardController::class, 'createTool'])->name('tools.create');
     });
 });

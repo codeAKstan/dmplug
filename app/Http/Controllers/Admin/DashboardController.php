@@ -22,7 +22,35 @@ class DashboardController extends Controller
 
     public function users()
     {
-        return "Users management page coming soon.";
+        $users = User::latest()->paginate(20);
+        return view('admin.users.index', compact('users'));
+    }
+
+    public function destroyUser(User $user)
+    {
+        $user->delete();
+        return back()->with('success', 'User deleted successfully.');
+    }
+
+    public function toggleBlock(User $user)
+    {
+        $user->update(['is_blocked' => !$user->is_blocked]);
+        $status = $user->is_blocked ? 'blocked' : 'unblocked';
+        return back()->with('success', "User $status successfully.");
+    }
+
+    public function updateBalance(Request $request, User $user)
+    {
+        $request->validate(['balance' => 'required|numeric|min:0']);
+        $user->update(['balance' => $request->balance]);
+        return back()->with('success', 'User balance updated successfully.');
+    }
+
+    public function fundAccount(Request $request, User $user)
+    {
+        $request->validate(['amount' => 'required|numeric|min:0']);
+        $user->increment('balance', $request->amount);
+        return back()->with('success', 'User account funded successfully.');
     }
 
     public function createTool()
