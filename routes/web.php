@@ -7,8 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Models\Tool;
 
 Route::get('/', function () {
-    $tools = Tool::latest()->get();
-    return view('welcome', compact('tools'));
+    $toolsByCategory = Tool::latest()->get()->groupBy('category');
+    return view('welcome', compact('toolsByCategory'));
 });
 
 Route::middleware([

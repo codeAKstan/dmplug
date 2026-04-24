@@ -102,7 +102,7 @@
                 <div x-show="step === 'categories'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Website Category -->
-                        <button @click="step = 'add-website'; selectedCategory = 'Websites'" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300 text-left">
+                        <button @click="step = 'add-item'; selectedCategory = 'Websites'" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300 text-left">
                             <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                             </div>
@@ -110,46 +110,47 @@
                             <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Domain names and full sites</p>
                         </button>
 
-                    <!-- Receipts Category -->
-                    <a href="#" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300">
-                        <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                        </div>
-                        <h4 class="text-xl font-bold group-hover:text-black transition-colors">Receipts</h4>
-                        <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Payment and purchase proof</p>
-                    </a>
+                        <!-- Receipts Category -->
+                        <button @click="step = 'add-item'; selectedCategory = 'Receipts'" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300 text-left">
+                            <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold group-hover:text-black transition-colors">Receipts</h4>
+                            <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Payment and purchase proof</p>
+                        </button>
 
-                    <!-- ID Cards Category -->
-                    <a href="#" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300">
-                        <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
-                        </div>
-                        <h4 class="text-xl font-bold group-hover:text-black transition-colors">ID Cards</h4>
-                        <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Identity and license templates</p>
-                    </a>
+                        <!-- ID Cards Category -->
+                        <button @click="step = 'add-item'; selectedCategory = 'ID Cards'" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300 text-left">
+                            <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold group-hover:text-black transition-colors">ID Cards</h4>
+                            <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Identity and license templates</p>
+                        </button>
 
-                    <!-- Tickets Category -->
-                    <a href="#" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300">
-                        <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
-                        </div>
-                        <h4 class="text-xl font-bold group-hover:text-black transition-colors">Tickets</h4>
-                        <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Event and travel tickets</p>
-                    </a>
+                        <!-- Tickets Category -->
+                        <button @click="step = 'add-item'; selectedCategory = 'Tickets'" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300 text-left">
+                            <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold group-hover:text-black transition-colors">Tickets</h4>
+                            <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Event and travel tickets</p>
+                        </button>
 
-                    <!-- Holding Paper Category -->
-                    <a href="#" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300">
-                        <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
-                        </div>
-                        <h4 class="text-xl font-bold group-hover:text-black transition-colors">Holding Paper</h4>
-                        <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Selfie with document images</p>
-                    </a>
+                        <!-- Holding Paper Category -->
+                        <button @click="step = 'add-item'; selectedCategory = 'Holding Paper'" class="group bg-white/5 border border-white/10 p-8 rounded-[30px] hover:bg-[#EFFF00] transition-all duration-300 text-left">
+                            <div class="w-12 h-12 bg-[#EFFF00]/10 rounded-2xl flex items-center justify-center mb-6 text-[#EFFF00] group-hover:bg-black/10 group-hover:text-black transition-all">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold group-hover:text-black transition-colors">Holding Paper</h4>
+                            <p class="text-white/40 text-sm mt-2 group-hover:text-black/60 transition-colors">Selfie with document images</p>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Add Website Form -->
-            <div x-show="step === 'add-website'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="p-10 pt-0">
+            <!-- Add Item Form -->
+            <div x-show="step === 'add-item'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="p-10 pt-0">
                 <button @click="step = 'categories'" class="flex items-center gap-2 text-white/50 hover:text-[#EFFF00] mb-8 transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     <span>Back to Categories</span>
@@ -157,20 +158,20 @@
 
                 <form action="{{ route('admin.tools.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
                     @csrf
-                    <input type="hidden" name="category" value="Websites">
+                    <input type="hidden" name="category" x-model="selectedCategory">
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="space-y-6">
-                            <div>
+                            <div x-show="selectedCategory === 'Websites'">
                                 <label class="block text-sm font-medium text-white/50 mb-3">Website Type</label>
                                 <div class="grid grid-cols-2 gap-4">
                                     <label class="relative flex items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl cursor-pointer hover:bg-white/10 transition-all">
-                                        <input type="radio" name="sub_category" value="Banking" class="sr-only peer" checked>
+                                        <input type="radio" name="sub_category" value="Banking" class="sr-only peer" checked :disabled="selectedCategory !== 'Websites'">
                                         <div class="peer-checked:text-[#EFFF00] font-bold">Banking</div>
                                         <div class="absolute inset-0 border-2 border-transparent peer-checked:border-[#EFFF00] rounded-2xl"></div>
                                     </label>
                                     <label class="relative flex items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl cursor-pointer hover:bg-white/10 transition-all">
-                                        <input type="radio" name="sub_category" value="Investment" class="sr-only peer">
+                                        <input type="radio" name="sub_category" value="Investment" class="sr-only peer" :disabled="selectedCategory !== 'Websites'">
                                         <div class="peer-checked:text-[#EFFF00] font-bold">Investment</div>
                                         <div class="absolute inset-0 border-2 border-transparent peer-checked:border-[#EFFF00] rounded-2xl"></div>
                                     </label>
@@ -178,8 +179,8 @@
                             </div>
 
                             <div>
-                                <label for="name" class="block text-sm font-medium text-white/50 mb-3">Bank/Website Name</label>
-                                <input type="text" name="name" id="name" required placeholder="e.g. Chase Bank, Binance" 
+                                <label for="name" class="block text-sm font-medium text-white/50 mb-3" x-text="selectedCategory === 'Websites' ? 'Bank/Website Name' : 'Item Name'"></label>
+                                <input type="text" name="name" id="name" required :placeholder="selectedCategory === 'Websites' ? 'e.g. Chase Bank, Binance' : 'e.g. Utility Bill, NY License'" 
                                     class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#EFFF00] transition-colors placeholder:text-white/20">
                             </div>
 
@@ -195,7 +196,7 @@
 
                         <div class="space-y-6">
                             <div>
-                                <label class="block text-sm font-medium text-white/50 mb-3">Website Image</label>
+                                <label class="block text-sm font-medium text-white/50 mb-3" x-text="selectedCategory + ' Image'"></label>
                                 <div x-data="{ photoName: null, photoPreview: null }" class="relative">
                                     <input type="file" name="image" class="hidden" x-ref="photo"
                                         x-on:change="
@@ -210,7 +211,7 @@
                                     <div class="relative group cursor-pointer" x-on:click.prevent="$refs.photo.click()">
                                         <div x-show="!photoPreview" class="w-full aspect-video bg-white/5 border-2 border-dashed border-white/10 rounded-[30px] flex flex-col items-center justify-center group-hover:bg-white/10 group-hover:border-[#EFFF00]/50 transition-all">
                                             <svg class="w-12 h-12 text-white/20 mb-4 group-hover:text-[#EFFF00] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                            <p class="text-white/40 text-sm font-medium">Click to upload bank logo/image</p>
+                                            <p class="text-white/40 text-sm font-medium">Click to upload <span x-text="selectedCategory"></span> image</p>
                                         </div>
                                         
                                         <div x-show="photoPreview" x-cloak class="w-full aspect-video rounded-[30px] overflow-hidden border border-white/10">
@@ -225,7 +226,7 @@
 
                             <div>
                                 <label for="description" class="block text-sm font-medium text-white/50 mb-3">Description (Optional)</label>
-                                <textarea name="description" id="description" rows="3" placeholder="Enter details about the website..." 
+                                <textarea name="description" id="description" rows="3" :placeholder="'Enter details about the ' + selectedCategory + '...'" 
                                     class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#EFFF00] transition-colors placeholder:text-white/20 resize-none"></textarea>
                             </div>
                         </div>
@@ -233,7 +234,7 @@
 
                     <div class="flex justify-end pt-6">
                         <button type="submit" class="bg-[#EFFF00] text-black px-12 py-4 rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#EFFF00]/20">
-                            Create Website Listing
+                            Create <span x-text="selectedCategory"></span> Listing
                         </button>
                     </div>
                 </form>

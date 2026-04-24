@@ -44,9 +44,9 @@
                         </div>
                     </div>
                     
-                    <div class="relative mt-auto">
-                        <img src="{{ asset('images/bank.jpg') }}" alt="Compresto UI" class="rounded-2xl shadow-2xl transform translate-y-20 hover:translate-y-10 transition-transform duration-700 w-full object-cover">
-                        <button class="absolute left-0 bottom-32 px-8 py-3 bg-black/10 backdrop-blur-md rounded-full text-black font-bold hover:bg-black/20 transition-all">
+                    <div class="relative mt-8 -mx-10 -mb-10 overflow-hidden rounded-b-[40px]">
+                        <img src="{{ asset('images/bank.jpg') }}" alt="Compresto UI" class="w-full h-80 object-cover object-top transform translate-y-6 hover:translate-y-2 transition-transform duration-700 shadow-2xl">
+                        <button class="absolute left-10 bottom-10 px-8 py-3 bg-black text-white font-bold hover:bg-gray-800 transition-all rounded-full shadow-lg">
                             View details
                         </button>
                     </div>
@@ -119,38 +119,52 @@
                 <p class="text-xl mb-12 font-medium">A list of premium tools and websites available for instant access.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                @foreach($tools as $tool)
-                <div class="group bg-white/5 border border-white/10 rounded-[40px] overflow-hidden hover:border-[#EFFF00]/50 transition-all duration-500 flex flex-col">
-                    <div class="aspect-video overflow-hidden relative">
-                        @if($tool->image)
-                        <img src="{{ asset('storage/' . $tool->image) }}" alt="{{ $tool->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        @else
-                        <div class="w-full h-full bg-[#EFFF00]/10 flex items-center justify-center text-[#EFFF00]">
-                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        </div>
-                        @endif
-                        <div class="absolute top-4 left-4">
-                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EFFF00] bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">{{ $tool->sub_category ?? $tool->category }}</span>
-                        </div>
+            @foreach($toolsByCategory as $category => $categoryTools)
+            <div class="mt-24 first:mt-12">
+                <div class="flex items-center justify-between mb-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-2 h-8 bg-[#EFFF00] rounded-full"></div>
+                        <h2 class="text-3xl font-bold tracking-tight">{{ $category }}</h2>
                     </div>
-                    
-                    <div class="p-8 flex flex-col flex-grow">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold line-clamp-1">{{ $tool->name }}</h3>
-                            <div class="text-xl font-bold text-[#EFFF00]">${{ number_format($tool->price, 2) }}</div>
-                        </div>
-                        
-                        <p class="text-white/40 text-sm line-clamp-2 mb-8 flex-grow">{{ $tool->description ?? 'Premium quality tool for your professional needs.' }}</p>
-                        
-                        <a href="#" class="w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-2 hover:bg-[#EFFF00] hover:text-black hover:border-[#EFFF00] transition-all duration-300 group/btn">
-                            Purchase Tool
-                            <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
-                    </div>
+                    <span class="text-white/20 text-sm font-medium">{{ $categoryTools->count() }} items available</span>
                 </div>
-                @endforeach
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    @foreach($categoryTools as $tool)
+                    <div class="group bg-white/5 border border-white/10 rounded-[40px] overflow-hidden hover:border-[#EFFF00]/50 transition-all duration-500 flex flex-col">
+                        <div class="aspect-video overflow-hidden relative">
+                            @if($tool->image)
+                            <img src="{{ asset('storage/' . $tool->image) }}" alt="{{ $tool->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            @else
+                            <div class="w-full h-full bg-[#EFFF00]/10 flex items-center justify-center text-[#EFFF00]">
+                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            @endif
+                            @if($tool->sub_category)
+                            <div class="absolute top-4 left-4">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EFFF00] bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">{{ $tool->sub_category }}</span>
+                            </div>
+                            @endif
+                        </div>
+                        
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold line-clamp-1">{{ $tool->name }}</h3>
+                                <div class="text-xl font-bold text-[#EFFF00]">${{ number_format($tool->price, 2) }}</div>
+                            </div>
+                            
+                            <p class="text-white/40 text-sm line-clamp-2 mb-8 flex-grow">{{ $tool->description ?? 'Premium quality tool for your professional needs.' }}</p>
+                            
+                            <a href="#" class="w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-2 hover:bg-[#EFFF00] hover:text-black hover:border-[#EFFF00] transition-all duration-300 group/btn">
+                                Purchase Tool
+                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
+            @endforeach
                 
             <!-- CTA -->
                 <div class="mt-32 bg-[#FCE26F] text-black rounded-[60px] p-16 text-center overflow-hidden relative">

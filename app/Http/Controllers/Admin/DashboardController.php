@@ -71,6 +71,10 @@ class DashboardController extends Controller
             'description' => 'nullable|string',
         ]);
 
+        if ($validated['category'] !== 'Websites') {
+            $validated['sub_category'] = null;
+        }
+
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('tools', 'public');
             $validated['image'] = $path;
