@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 
+use App\Models\Tool;
+
 Route::get('/', function () {
-    return view('welcome');
+    $tools = Tool::latest()->get();
+    return view('welcome', compact('tools'));
 });
 
 Route::middleware([
@@ -34,5 +37,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('users/{user}/update-balance', [DashboardController::class, 'updateBalance'])->name('users.update-balance');
         Route::post('users/{user}/fund', [DashboardController::class, 'fundAccount'])->name('users.fund');
         Route::get('tools/create', [DashboardController::class, 'createTool'])->name('tools.create');
+        Route::post('tools', [DashboardController::class, 'storeTool'])->name('tools.store');
     });
 });
