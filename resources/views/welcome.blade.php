@@ -9,6 +9,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
         <style>
             body { font-family: 'Instrument Sans', sans-serif; }
             .tool-card { @apply relative overflow-hidden rounded-[40px] transition-all duration-500 hover:scale-[1.01]; }
@@ -145,5 +146,6 @@ You agree by using this website that the owner(s) of this website and other webs
         <footer class="py-10 border-t border-white/5 text-center text-white/20 text-sm font-medium">
             &copy; {{ date('Y') }} DMPlug. All rights reserved.
         </footer>
+        @livewireScripts
     </body>
 </html>

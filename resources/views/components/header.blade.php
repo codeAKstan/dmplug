@@ -29,17 +29,36 @@
                                 </div>
                             @endif
                             <span class="hidden md:block text-[15px] text-white/70 font-medium group-hover:text-white transition-colors">{{ Auth::user()->name }}</span>
+                            <svg class="w-4 h-4 text-white/40 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
 
                         <!-- User Dropdown -->
-                        <div x-show="userDropdownOpen" @click.away="userDropdownOpen = false" 
-                             class="absolute right-0 mt-3 w-48 bg-[#141414] border border-white/10 rounded-xl shadow-2xl py-2 overflow-hidden">
-                            <a href="{{ route('profile.show') }}" class="block px-4 py-2.5 text-[14px] text-white/70 hover:bg-white/5 hover:text-white transition-colors">Profile Settings</a>
+                        <div x-show="userDropdownOpen" 
+                             x-cloak
+                             @click.away="userDropdownOpen = false"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 scale-95 transform"
+                             x-transition:enter-end="opacity-100 scale-100 transform"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="opacity-100 scale-100 transform"
+                             x-transition:leave-end="opacity-0 scale-95 transform"
+                             class="absolute right-0 mt-3 w-56 bg-[#141414] border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] py-2.5 overflow-hidden ring-1 ring-white/5">
+                            <div class="px-4 py-3 border-b border-white/5 mb-1">
+                                <p class="text-[12px] text-white/40 font-medium uppercase tracking-wider">Signed in as</p>
+                                <p class="text-[14px] text-white font-bold truncate">{{ Auth::user()->email }}</p>
+                            </div>
+                            <a href="{{ route('profile.show') }}" class="flex items-center space-x-3 px-4 py-2.5 text-[14px] text-white/70 hover:bg-white/5 hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                <span>Profile Settings</span>
+                            </a>
                             <div class="border-t border-white/5 my-1"></div>
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
-                                <button type="submit" @click.prevent="$root.submit();" class="w-full text-left px-4 py-2.5 text-[14px] text-red-400 hover:bg-red-400/10 transition-colors">
-                                    Log Out
+                                <button type="submit" @click.prevent="$root.submit();" class="flex items-center space-x-3 w-full text-left px-4 py-2.5 text-[14px] text-red-400 hover:bg-red-400/10 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                                    <span>Log Out</span>
                                 </button>
                             </form>
                         </div>
