@@ -339,7 +339,7 @@
             </div>
         </div>
         </div>
-    </div>
+    @endauth
     <!-- Fund Wallet Modal -->
     @auth
     <div x-show="fundModalOpen" 
@@ -408,7 +408,7 @@
                     </div>
                 </div>
 
-                <a :href="'https://wa.me/2348052923367?text=Hello, I want to fund my wallet with $' + fundAmount" target="_blank" class="w-full py-5 bg-[#EFFF00] text-black font-extrabold text-lg rounded-2xl hover:bg-white transition-all shadow-xl shadow-[#EFFF00]/20 flex items-center justify-center gap-3">
+                <a :href="'https://wa.me/2348052923367?text=Hello, I want to fund my wallet with $' + fundAmount + '. My wallet address is: {{ Auth::user()->wallet_address }}'" target="_blank" class="w-full py-5 bg-[#EFFF00] text-black font-extrabold text-lg rounded-2xl hover:bg-white transition-all shadow-xl shadow-[#EFFF00]/20 flex items-center justify-center gap-3">
                     Proceed to WhatsApp
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
