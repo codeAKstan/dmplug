@@ -45,7 +45,7 @@
                     </div>
                     
                     <div class="relative mt-8 -mx-10 -mb-10 overflow-hidden rounded-b-[40px]">
-                        <img src="{{ asset('images/bank.jpg') }}" alt="Compresto UI" class="w-full h-80 object-cover object-top transform translate-y-6 hover:translate-y-2 transition-transform duration-700 shadow-2xl">
+                        <!-- <img src="{{ asset('images/bank.jpg') }}" alt="Compresto UI" class="w-full h-80 object-cover object-top transform translate-y-6 hover:translate-y-2 transition-transform duration-700 shadow-2xl"> -->
                         <button class="absolute left-10 bottom-10 px-8 py-3 bg-black text-white font-bold hover:bg-gray-800 transition-all rounded-full shadow-lg">
                             View details
                         </button>
@@ -105,7 +105,7 @@
                     </div>
                     
                     <div class="relative flex-grow overflow-hidden px-4">
-                        <img src="{{ asset('images/passport.jpg') }}" alt="Eagle UI" class="rounded-t-2xl shadow-xl w-full h-full object-cover object-top">
+                        <!-- <img src="{{ asset('images/passport.jpg') }}" alt="Eagle UI" class="rounded-t-2xl shadow-xl w-full h-full object-cover object-top"> -->
                         <div class="absolute bottom-6 left-6 arrow-icon bg-black/5 hover:bg-black/10">
                             <svg class="w-6 h-6 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </div>
