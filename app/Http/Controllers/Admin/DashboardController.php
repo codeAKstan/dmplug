@@ -9,6 +9,9 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AccountFundedMail;
+
 class DashboardController extends Controller
 {
     public function updateSettings(Request $request)
@@ -59,7 +62,18 @@ class DashboardController extends Controller
     public function updateBalance(Request $request, User $user)
     {
         $request->validate(['balance' => 'required|numeric|min:0']);
+        $oldBalance = $user->balance;
         $user->update(['balance' => $request->balance]);
+        
+        if ($request->balance > $oldBalance) {
+            $amount = $request->balance - $oldBalance;
+            try {
+                Mail::to($user->email)->send(new AccountFundedMail($user, $amount));
+            } catch (\Exception $e) {
+                logger('Failed to send funding email: ' . $e->getMessage());
+            }
+        }
+
         return back()->with('success', 'User balance updated successfully.');
     }
 
@@ -67,6 +81,14 @@ class DashboardController extends Controller
     {
         $request->validate(['amount' => 'required|numeric|min:0']);
         $user->increment('balance', $request->amount);
+
+        // Send Funding Email
+        try {
+            Mail::to($user->email)->send(new AccountFundedMail($user, $request->amount));
+        } catch (\Exception $e) {
+            logger('Failed to send funding email: ' . $e->getMessage());
+        }
+
         return back()->with('success', 'User account funded successfully.');
     }
 
