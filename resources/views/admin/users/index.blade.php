@@ -49,6 +49,7 @@
                         <tr class="border-b border-white/5">
                             <th class="px-8 py-6 text-xs font-bold uppercase tracking-wider text-white/40">User</th>
                             <th class="px-8 py-6 text-xs font-bold uppercase tracking-wider text-white/40">Email</th>
+                            <th class="px-8 py-6 text-xs font-bold uppercase tracking-wider text-white/40">Wallet Address</th>
                             <th class="px-8 py-6 text-xs font-bold uppercase tracking-wider text-white/40">Balance</th>
                             <th class="px-8 py-6 text-xs font-bold uppercase tracking-wider text-white/40">Status</th>
                             <th class="px-8 py-6 text-xs font-bold uppercase tracking-wider text-white/40 text-right">Actions</th>
@@ -66,6 +67,13 @@
                                     </div>
                                 </td>
                                 <td class="px-8 py-6 text-white/60">{{ $user->email }}</td>
+                                <td class="px-8 py-6">
+                                    @if($user->wallet_address)
+                                        <code class="text-xs bg-white/5 px-2 py-1 rounded border border-white/10 text-white/40">{{ $user->wallet_address }}</code>
+                                    @else
+                                        <span class="text-white/20 italic text-xs">Not set</span>
+                                    @endif
+                                </td>
                                 <td class="px-8 py-6 font-mono text-[#EFFF00]">${{ number_format($user->balance, 2) }}</td>
                                 <td class="px-8 py-6">
                                     @if($user->is_blocked)
@@ -124,7 +132,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="px-8 py-20 text-center text-white/20 font-medium">No users found.</td>
+                                <td colspan="6" class="px-8 py-20 text-center text-white/20 font-medium">No users found.</td>
                             </tr>
                         @endforelse
                     </tbody>
