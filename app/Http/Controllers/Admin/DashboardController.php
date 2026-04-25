@@ -31,13 +31,11 @@ class DashboardController extends Controller
     public function index()
     {
         $totalUsers = User::count();
-        
-        // Since we don't have revenue/tools tables yet, we'll use placeholder real-looking logic
-        // In a real app, these would come from Transaction and Tool models
         $totalRevenue = 0; 
         $availableTools = Tool::count();
+        $tools = Tool::latest()->get();
         
-        return view('admin.dashboard', compact('totalUsers', 'totalRevenue', 'availableTools'));
+        return view('admin.dashboard', compact('totalUsers', 'totalRevenue', 'availableTools', 'tools'));
     }
 
     public function users()
@@ -120,5 +118,42 @@ class DashboardController extends Controller
         Tool::create($validated);
 
         return redirect()->route('admin.dashboard')->with('success', 'Tool added successfully!');
+    }
+    public function updateTool(Request $request, Tool $tool)
+    {
+        $validated = $request->validate([
+            'category' => 'required|string',
+            'sub_category' => 'nullable|string',
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'description' => 'nullable|string',
+        ]);
+
+        if ($validated['category'] !== 'Websites') {
+            $validated['sub_category'] = null;
+        }
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($tool->image) {
+                Storage::disk('public')->delete($tool->image);
+            }
+            $path = $request->file('image')->store('tools', 'public');
+            $validated['image'] = $path;
+        }
+
+        $tool->update($validated);
+
+        return redirect()->route('admin.dashboard')->with('success', 'Tool updated successfully!');
+    }
+
+    public function destroyTool(Tool $tool)
+    {
+        if ($tool->image) {
+            Storage::disk('public')->delete($tool->image);
+        }
+        $tool->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Tool deleted successfully!');
     }
 }

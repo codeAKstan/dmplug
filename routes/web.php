@@ -39,6 +39,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('users/{user}/update-balance', [DashboardController::class, 'updateBalance'])->name('users.update-balance');
         Route::post('users/{user}/fund', [DashboardController::class, 'fundAccount'])->name('users.fund');
         Route::post('tools', [DashboardController::class, 'storeTool'])->name('tools.store');
+        Route::put('tools/{tool}', [DashboardController::class, 'updateTool'])->name('tools.update');
+        Route::delete('tools/{tool}', [DashboardController::class, 'destroyTool'])->name('tools.destroy');
         Route::post('settings', [DashboardController::class, 'updateSettings'])->name('settings.update');
     });
 });
