@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\WalletController;
+use App\Http\Controllers\User\PurchaseController;
 
 use App\Models\Tool;
 
@@ -20,7 +22,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::post('/wallet/generate', [\App\Http\Controllers\User\WalletController::class, 'generate'])->name('wallet.generate');
+    Route::post('/wallet/generate', [WalletController::class, 'generate'])->name('wallet.generate');
+    Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
+    
+    // Document Generation Routes
+    Route::get('/tools/{tool}/build', [\App\Http\Controllers\User\ToolController::class, 'build'])->name('tools.build');
+    Route::post('/tools/{tool}/generate', [\App\Http\Controllers\User\ToolController::class, 'generate'])->name('tools.generate');
 });
 
 // Admin Routes
